@@ -1,0 +1,65 @@
+Oversimplified obesity prediction
+========================================================
+
+Course project for the MOOC
+*Developing Data Products*
+on Coursera
+
+A Shiny application 
+featuring a simple obesity prediction based on Quetelet's Body Mass Index,
+
+Jan 30th, 2016
+
+
+The Shiny application
+========================================================
+This is a very simple Shiny application.
+
+It uses simple widgets to allow the end user to input his/her height and weight.
+
+Based on the inputs, the application computes a body mass index and tells if that index may indicate obesity (that is, if the index > 30).
+
+The end user may input data either in the metric units area, either in the imperial units area.
+
+Thanks to reactive functions, the application will make the prediction only for the last modified units area.
+
+
+The Body Mass Index
+========================================================
+This index was devised by the Belgian mathematician Adolphe Quetelet from 1830 to 1850 during which time he developed what he called "social physics".
+
+Quetelet was a pionneer in Statistics, and the first one to introduce statistics in social sciences.
+
+The modern term "body mass index" (BMI) owes its popularity to a paper published in the July 1972 edition of the Journal of Chronic Diseases by Ancel Keys. This found the BMI to be the best proxy for body fat percentage among ratios of human body weight and height.
+
+It is commonly accepted that indices > 30 indicate obesity.
+
+*(source: [Wikipedia](https://en.wikipedia.org/wiki/Body_mass_index))*
+
+Computing the Body Mass Index (BMI)
+========================================================
+Assuming metric units (weight in kg, height in m):
+```{r, results="hide"}
+bmi <- function(weight, height) { weight / (height * height) }
+```
+```{r}
+bmi(85, 1.80) # BMI for 85 kg, 1.80 m
+```
+
+When using imperial units (lbs, in), apply a coefficient of 703.
+```{r}
+703 * bmi(160, 70) # BMI for 160 lbs, 70 in
+```
+
+
+Limitations
+========================================================
+
+The BMI is only a rough estimate of the risk of obesity.
+
+Other polynomials have been proposed.
+
+Anyway, it is not always  suitable, e.g. for small people and for athletes.
+Many (e.g. gymnasts, basketball and soccer players) but not all (e.g. football linemen) athletes have a high muscle to fat ratio and may have a BMI that is misleadingly high relative to their body fat percentage.
+
+It must be used with care and more medical tests may be needed for a true diagnostic.

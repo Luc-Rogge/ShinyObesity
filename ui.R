@@ -10,6 +10,7 @@ shinyUI(pageWithSidebar(
   # Sidebar with inputs
   sidebarPanel(
       helpText("Please enter both your weight and height, either in the 'metrics units' area, either in the 'imperial units' area, then look at the obesity prediction in the right panel."),
+      helpText(a("(Click here for the github repository)", href="https://github.com/Luc-Rogge/ShinyObesity", target="_blank")),
       h2("Using metric units:"),
       numericInput("kg",
                   "Your weight (kg):",
